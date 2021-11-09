@@ -4,15 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Weather</title>
-
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-    <div id="weather">
+    <div class="weather">
+        <div class="info">
+            <h3>CURRENT WEATHER</h3>
+        </div>
+        <div class="data">
+            <div class="icon"></div>
+            <div class="temp"></div>
+            <div class="dayTime"></div>
+        </div>
 
     </div>
 
-    <script src="/AJAX/Weather/weatherAPI.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/weatherAPI.js"></script>
 </body>
 
 </html>
