@@ -8,20 +8,40 @@
 </head>
 
 <body>
-    <div class="weather">
-        <div class="info">
+    <div class="currentWeather color">
+        <div class="currentInfo">
             <h3>CURRENT WEATHER</h3>
         </div>
-        <div class="data">
-            <div class="icon"></div>
-            <div class="temp"></div>
-            <div class="dayTime"></div>
+        <div class="currentData">
+            <div class="currentIcon"></div>
+            <div class="currentTemp"></div>
+            <div class="currentDayTime"></div>
         </div>
+    </div>
+    <div class="hourlyWeather color">
+        <h3>HOURLY</h3>
+        <div class="hourlyInfo">
+            <div class="hourlyIndexes">
+                <h3 id="today">Today</h3>
+                <p>Forecast</p>
+                <p>Temp (C&deg;)</p>
+                <p>RealFeel</p>
+                <p>Wind (km/h)</p>
+            </div>
+            <div class="hourlyValue">
 
+            </div>
+        </div>
+    </div>
+    <div class="nearbyPlaces color">
+        <h3>NEARBY PLACES</h3>
+        <div class="cityWeather">
+
+        </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/weatherAPI.js"></script>
+    <script type="module" src="/weatherAPI.js"></script>
 </body>
 
 </html>

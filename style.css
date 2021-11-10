@@ -2,22 +2,71 @@ body {
     background-color: rgb(207, 207, 207);
 }
 
-.weather {
-    display: block;
-    background-color: rgb(226, 223, 209);
+.color {
+    background-color: rgb(224, 224, 224);
     margin: 15px 20px;
 }
 
-.info {
+.currentWeather {
+    display: block;
+}
+
+.currentInfo {
     display: flex;
     justify-content: space-between;
     padding: 0 20px;
 }
 
-.data {
+.currentData {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+}
+
+.hourlyWeather {
+    display: block;
+    padding: 1px 20px;
+}
+
+.hourlyValue {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.hourlyInfo {
+    display: flex;
+}
+
+.hourlyIndexes {
+    margin-right: 30px;
+    width: 10%;
+}
+
+.nearbyPlaces {
+    padding: 1px 20px;
+}
+
+.cityWeather {
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    padding: 0 100px;
+    flex-wrap: wrap;
+}
+
+.city {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+    background-color: rgb(196, 196, 196);
+    margin: 10px 10px;
+}
+
+#today {
+    margin-top: 16px;
+    margin-bottom: 90px;
 }
 
 h3,
@@ -29,6 +78,14 @@ h1 {
     font-weight: 500;
 }
 
+p {
+    font-size: large;
+}
+
 img {
-    width: 80px;
+    width: 70px;
+}
+
+.hours {
+    margin-bottom: 0;
 }
