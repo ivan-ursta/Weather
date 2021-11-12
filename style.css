@@ -1,10 +1,58 @@
 body {
-    background-color: rgb(207, 207, 207);
+    background-color: rgb(168, 168, 168);
+    margin: 0;
+}
+
+header {
+    display: block;
+}
+
+.head_1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(245, 245, 245);
+    padding: 0 32px;
+}
+
+.head_2 {
+    display: flex;
+    padding-left: 30px;
+    background-color: rgb(53, 53, 53);
+    max-height: 50px;
+}
+
+.today,
+.day5 {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin: 0;
+    border-left: 1px solid white;
+}
+
+a {
+    color: white;
+    font-size: larger;
+    margin: 30px 30px;
 }
 
 .color {
-    background-color: rgb(224, 224, 224);
-    margin: 15px 20px;
+    background-color: rgb(255, 255, 255);
+    margin: 15px 30px;
+}
+
+.search {
+    display: flex;
+}
+
+button img {
+    width: 25px;
+}
+
+input {
+    width: 260px;
+    margin-right: 5px;
 }
 
 .currentWeather {
@@ -60,7 +108,7 @@ body {
     justify-content: space-around;
     align-items: center;
     width: 40%;
-    background-color: rgb(196, 196, 196);
+    background-color: rgba(212, 212, 212, 0.74);
     margin: 10px 10px;
 }
 
@@ -69,13 +117,19 @@ body {
     margin-bottom: 90px;
 }
 
+h1,
 h3,
 h4 {
-    color: rgb(0, 204, 153);
+    color: rgb(3, 160, 87);
+}
+
+#green {
+    color: rgb(3, 160, 87);
+    font-weight: bold;
 }
 
 h1 {
-    font-weight: 500;
+    font-weight: bold;
 }
 
 p {
@@ -88,4 +142,37 @@ img {
 
 .hours {
     margin-bottom: 0;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dayValue {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+[class^="dayValueDiv"] {
+    width: 19.5%;
+    background-color: rgb(216, 216, 216);
+}
+
+#dayWeather {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.active {
+    background-color: rgba(255, 255, 255, 0.89);
+}
+
+#day-5 {
+    display: none;
 }

@@ -8,37 +8,66 @@
 </head>
 
 <body>
-    <div class="currentWeather color">
-        <div class="currentInfo">
-            <h3>CURRENT WEATHER</h3>
-        </div>
-        <div class="currentData">
-            <div class="currentIcon"></div>
-            <div class="currentTemp"></div>
-            <div class="currentDayTime"></div>
-        </div>
-    </div>
-    <div class="hourlyWeather color">
-        <h3>HOURLY</h3>
-        <div class="hourlyInfo">
-            <div class="hourlyIndexes">
-                <h3 id="today">Today</h3>
-                <p>Forecast</p>
-                <p>Temp (C&deg;)</p>
-                <p>RealFeel</p>
-                <p>Wind (km/h)</p>
+    <header>
+        <div class="header">
+            <div class="head_1">
+                <h1>My Weather</h1>
+                <div class="search form-inline my-2 my-lg-0 ml-5 ">
+                    <input class="form-control mr-sm-2 ml-2" id="input" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn my-2 my-sm-0" id="search" type="submit"><img src="images/search.png"></button>
+                </div>
             </div>
-            <div class="hourlyValue">
-
+            <div class="head_2">
+                <div class="today"><a href="#" id="today_a">Today</a></div>
+                <div class="day5"><a href="#" id="day5_a">5-day forecast</a></div>
             </div>
         </div>
+    </header>
+    <div id="Today">
+        <section id="current">
+            <div class="currentWeather color">
+                <div class="currentInfo">
+                    <h3>CURRENT WEATHER</h3>
+                </div>
+                <div class="currentData">
+                    <div class="currentIcon"></div>
+                    <div class="currentTemp"></div>
+                    <div class="currentDayTime"></div>
+                </div>
+            </div>
+        </section>
+        <section id="hourly">
+            <div class="hourlyWeather color">
+                <h3>HOURLY</h3>
+                <div class="hourlyInfo">
+                    <div class="hourlyIndexes">
+                        <h3 id="green">Today</h3>
+                        <p>Forecast</p>
+                        <p>Temp (C&deg;)</p>
+                        <p>RealFeel</p>
+                        <p>Wind (km/h)</p>
+                    </div>
+                    <div class="hourlyValue">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="nearby">
+            <div class="nearbyPlaces color">
+                <h3>NEARBY PLACES</h3>
+                <div class="cityWeather">
+                </div>
+            </div>
+        </section>
     </div>
-    <div class="nearbyPlaces color">
-        <h3>NEARBY PLACES</h3>
-        <div class="cityWeather">
 
-        </div>
+    <div id="day-5">
+        <section id="dayWeather">
+            <div class="dayValue"></div>
+        </section>
+
     </div>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="module" src="/weatherAPI.js"></script>
