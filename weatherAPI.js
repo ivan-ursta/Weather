@@ -3,7 +3,6 @@ import toCompass from "./degToCompass.js";
 let geoLoc = navigator.geolocation;
 let watchID;
 
-
 function errorHandler(err) {
     if (err.code == 1) {
         alert("Error: Access is denied!");
@@ -67,6 +66,7 @@ $('#search').on('click', function() {
     }
     request.send();
 });
+
 
 function openRequest(lat, lon) {
     let request;
@@ -177,103 +177,22 @@ function openRequest(lat, lon) {
     }
     request.send();
 
-    $('#day5_a').on('click', function() {
-        $('#Today').css('display', 'none');
-        $('#day-5').css('display', 'block');
-        let request;
-        if (window.XMLHttpRequest) {
-            request = new XMLHttpRequest();
-        } else {
-            request = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        let weatherObj1;
+    openRequest2(lat, lon);
 
-        request.open("GET", `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=metric&APPID=a00b1af3da62c683cbdd2b93bb19dc93`);
-        request.onload = function() {
-            if (request.status === 200) {
-                weatherObj1 = JSON.parse(request.response);
-                console.log(weatherObj1);
-
-                let dayValue = $(".dayValue");
-                let dayValueDiv = "";
-                let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-                let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-                let dayWeatherSec = $('#dayWeather');
-
-                $.each(weatherObj1.daily, function(index, weatherInfo) {
-                    if (index <= 4) {
-                        let dayWeather = weatherInfo.dt;
-                        let dayDate = new Date(1000 * dayWeather);
-                        let day = dayDate.getDay();
-                        let month = dayDate.getMonth();
-                        let date = dayDate.getDate();
-
-                        dayValueDiv = $(`<div class='dayValueDiv${index} center'></div>`);
-                        $(dayValue).append(dayValueDiv);
-
-                        let dayDiv = $(`.dayValueDiv${index}`);
-
-                        let dayElem = $("<h3 class='day' id='green'></h3>").text(days[day]);
-                        let dateElem = $("<p class='day'></p>").text(months[month] + ' ' + date);
-                        dayDiv.append(dayElem, dateElem);
-
-
-                        let dayIcon = weatherInfo.weather[0].icon;
-                        let dayIconElem = $(`<img src = "https://openweathermap.org/img/wn/${dayIcon}.png"></img>`);
-                        dayDiv.append(dayIconElem);
-
-                        let dayTemp = weatherInfo.temp.max;
-                        let dayTempElem = $("<h2></h2>").html(dayTemp + '&deg;' + 'C');
-                        dayDiv.append(dayTempElem);
-
-                        let dayDescription = weatherInfo.weather[0].description;
-                        let dayDescriptionElem = $("<p></p>").text(dayDescription);
-                        dayDiv.append(dayDescriptionElem);
-
-                        $('#hourly').clone().appendTo(dayWeatherSec);
-                        index++;
-                    }
-                });
-
-
-
-                $('.dayValueDiv0').addClass('active');
-
-                $('.dayValue div').on('click', function() {
-                    $(this).closest('.dayValue').find('.active').removeClass('active');
-                    $(this).addClass('active');
-                })
-
-            }
-        }
-        request.send();
-
-        let request1;
-        if (window.XMLHttpRequest) {
-            request1 = new XMLHttpRequest();
-        } else {
-            request1 = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        let weatherObj2;
-
-        request1.open("GET", `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&APPID=a00b1af3da62c683cbdd2b93bb19dc93`);
-        request1.onload = function() {
-            if (request1.status === 200) {
-                weatherObj2 = JSON.parse(request1.response);
-                console.log(weatherObj2);
-
-
-            }
-        }
-        request1.send();
-
+    $('#today_a').on('click', function() {
+        $('#Today').css('display', 'block');
+        $('#day-5').css('display', 'none');
     });
 
+    $('#day5_a').on('click', function() {
 
+        $('#Today').css('display', 'none');
+        $('#day-5').css('display', 'block');
+
+    });
 }
 
-
-function openRequest1(lat, lon, req) {
+function openRequest1(lat, lon) {
     let request;
     if (window.XMLHttpRequest) {
         request = new XMLHttpRequest();
@@ -314,4 +233,74 @@ function openRequest1(lat, lon, req) {
         }
     }
     request.send();
+}
+
+function openRequest2(lat, lon) {
+    let request;
+    if (window.XMLHttpRequest) {
+        request = new XMLHttpRequest();
+    } else {
+        request = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    let weatherObj1;
+    request.open("GET", `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=metric&APPID=a00b1af3da62c683cbdd2b93bb19dc93`);
+    request.onload = function() {
+        if (request.status === 200) {
+            weatherObj1 = JSON.parse(request.response);
+            console.log(weatherObj1);
+            let dayValue = $(".dayValue");
+            let dayValueDiv = "";
+            let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+            $.each(weatherObj1.daily, function(index, weatherInfo) {
+                if (index <= 4) {
+                    let dayWeather = weatherInfo.dt;
+                    let dayDate = new Date(1000 * dayWeather);
+                    let day = dayDate.getDay();
+                    let month = dayDate.getMonth();
+                    let date = dayDate.getDate();
+                    dayValueDiv = $(`<div class='dayValueDiv${index} center'></div>`);
+                    $(dayValue).append(dayValueDiv);
+                    let dayDiv = $(`.dayValueDiv${index}`);
+                    let dayElem = $("<h3 class='day' id='green'></h3>").text(days[day]);
+                    let dateElem = $("<p class='day'></p>").text(months[month] + ' ' + date);
+                    dayDiv.append(dayElem, dateElem);
+                    let dayIcon = weatherInfo.weather[0].icon;
+                    let dayIconElem = $(`<img src = "https://openweathermap.org/img/wn/${dayIcon}.png"></img>`);
+                    dayDiv.append(dayIconElem);
+                    let dayTemp = weatherInfo.temp.max;
+                    let dayTempElem = $("<h2></h2>").html(dayTemp + '&deg;' + 'C');
+                    dayDiv.append(dayTempElem);
+                    let dayDescription = weatherInfo.weather[0].description;
+                    let dayDescriptionElem = $("<p></p>").text(dayDescription);
+                    dayDiv.append(dayDescriptionElem);
+                    index++;
+                }
+            });
+            $('.dayValueDiv0').addClass('active');
+            $('.dayValue div').on('click', function() {
+                $(this).closest('.dayValue').find('.active').removeClass('active');
+                $(this).addClass('active');
+            })
+        }
+    }
+    request.send();
+    let request1;
+    if (window.XMLHttpRequest) {
+        request1 = new XMLHttpRequest();
+    } else {
+        request1 = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    let weatherObj2;
+    request1.open("GET", `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&APPID=a00b1af3da62c683cbdd2b93bb19dc93`);
+    request1.onload = function() {
+        if (request1.status === 200) {
+            weatherObj2 = JSON.parse(request1.response);
+            console.log(weatherObj2);
+
+            //Coming soon
+        }
+    }
+    request1.send();
 }
